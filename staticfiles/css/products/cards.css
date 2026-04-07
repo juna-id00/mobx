@@ -1,0 +1,54 @@
+/* GLOBAL */
+body {
+    background: none !important;
+    color: white !important;
+}
+
+/* CATEGORY TITLE */
+.category-title {
+    color: #fff;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+/* WRAP THE CARDS IN BOOTSTRAP GRID */
+.row.g-4 > .card {
+    padding: 0;
+}
+
+/* CARD FIX */
+.card {
+    background: none;
+    backdrop-filter: blur(2px);
+    border-radius: 12px;
+    overflow: hidden;
+    color: white;
+    margin: 8px;
+    flex: 0 0 calc(25% - 16px);  /* 4 in a row always */
+}
+
+/* Title & Text */
+.card-title,
+.card-text {
+    color: white !important;
+}
+
+/* BUTTON */
+.card .btn {
+    width: 100%;
+    border-radius: 6px;
+}
+
+/* IMAGE CROPPING — IMPORTANT PART */
+.card-img-top {
+    width: 100%;
+    height: 220px;          /* force fixed height */
+    object-fit: contain;      /* crop image, not stretch card */
+    object-position: center;
+}
+
+/* Category separator line */
+.category-line {
+    margin: 40px 0;
+    border-color: #444;
+}

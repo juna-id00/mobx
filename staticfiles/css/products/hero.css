@@ -1,0 +1,44 @@
+/* FULL PAGE VIDEO BACKGROUND */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: none !important;
+}
+
+.background-dark{
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: #020617; /* premium dark */
+
+    z-index: -1;
+}
+
+/* SMALL PRODUCT HERO */
+.products-hero {
+  width: 100%;
+  padding: 140px 0 50px;  /* space below navbar + spacing */
+  text-align: center;
+  color: #fff;
+  background: none !important;  /* remove ANY background */
+}
+
+/* Heading */
+.products-hero h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* Sub text */
+.products-hero p {
+  font-size: 1.15rem;
+  color: #e5e7eb;
+  margin: 0;
+  background: none !important; /* double safe */
+}
