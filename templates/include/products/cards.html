@@ -1,0 +1,166 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobX Products</title>
+
+    <!-- BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="{% static 'css/products/cards.css' %}">
+</head>
+
+<body style="background: none !important; color: white;">
+
+<div class="container my-5">
+
+
+<!-- ================= MOBILE CATEGORY ================= -->
+<h2 class="category-title">Mobiles</h2>
+<div class="row g-4">
+    {% for mobile in mobiles %}
+    <div class="col-6 col-md-4 col-lg-3">
+        <div class="card product-card">
+            <img src="{{ mobile.image.url }}" class="card-img-top product-img" alt="{{ mobile.name }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ mobile.name }}</h5>
+                <p class="price">₹{{ mobile.price }}</p>
+
+                <!-- KEY FEATURES -->
+<!--                <ul class="feature-list">-->
+<!--                    <li>{{ mobile.ram }} RAM</li>-->
+<!--                    <li>{{ mobile.storage }} Storage</li>-->
+<!--                    <li>{{ mobile.battery }} Battery</li>-->
+<!--                    <li>{{ mobile.camera }} Camera</li>-->
+
+<!--                </ul>-->
+
+                <a href="{% url 'product_view' 'mobile' mobile.id %}" class="btn btn-primary w-100">View</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<hr class="category-line">
+
+
+<!-- ================= LAPTOPS ================= -->
+<h2 class="category-title">Laptops</h2>
+<div class="row g-4">
+    {% for laptop in laptops %}
+    <div class="col-6 col-md-4 col-lg-3">
+        <div class="card product-card">
+            <img src="{{ laptop.image.url }}" class="card-img-top product-img" alt="{{ laptop.name }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ laptop.brand }} {{ laptop.name }}</h5>
+                <p class="price">₹{{ laptop.price }}</p>
+
+                <!-- KEY FEATURES -->
+                <ul class="feature-list">
+                    <li>{{ laptop.ram }} RAM</li>
+                    <li>{{ laptop.storage }} Storage</li>
+                    <li>{{ laptop.battery }} mah Battery</li>
+                    <li>{{ laptop.camera }}mp Camera</li>
+
+                </ul>
+
+                <a href="{% url 'product_view' 'laptop' laptop.id %}" class="btn btn-primary w-100">View</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<hr class="category-line">
+
+
+<!-- ================= TABLETS ================= -->
+<h2 class="category-title">Tablets</h2>
+<div class="row g-4">
+    {% for tablet in tablets %}
+    <div class="col-6 col-md-4 col-lg-3">
+        <div class="card product-card">
+            <img src="{{ tablet.image.url }}" class="card-img-top product-img" alt="{{ tablet.name }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ tablet.brand }} {{ tablet.name }}</h5>
+                <p class="price">₹{{ tablet.price }}</p>
+
+                <!-- KEY FEATURES -->
+                <ul class="feature-list">
+                    <li>{{ tablet.ram }} RAM</li>
+                    <li>{{ tablet.storage }} Storage</li>
+                    <li>{{ tablet.battery }} mah Battery</li>
+                    <li>{{ tablet.camera }}mp Camera</li>
+
+                </ul>
+
+                <a href="{% url 'product_view' 'tablet' tablet.id %}" class="btn btn-primary w-100">View</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<hr class="category-line">
+
+
+<!-- ================= SMARTWATCHES ================= -->
+<h2 class="category-title">Smart Watches</h2>
+<div class="row g-4">
+    {% for smartwatch in smartwatches %}
+    <div class="col-6 col-md-4 col-lg-3">
+        <div class="card product-card">
+            <img src="{{ smartwatch.image.url }}" class="card-img-top product-img" alt="{{ smartwatch.name }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ smartwatch.brand }} {{ smartwatch.name }}</h5>
+                <p class="price">₹{{ smartwatch.price }}</p>
+
+                <!-- KEY FEATURES -->
+                <ul class="feature-list">
+                    <li>{{ smartwatch.display }} Display</li>
+                    <li>{{ smartwatch.battery }} mah Battery</li>
+                </ul>
+
+                <a href="{% url 'product_view' 'smartwatch' smartwatch.id %}" class="btn btn-primary w-100">View</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<hr class="category-line">
+
+
+<!-- ================= HEADPHONES ================= -->
+<h2 class="category-title">Headphones</h2>
+<div class="row g-4">
+    {% for headphone in headphones %}
+    <div class="col-6 col-md-4 col-lg-3">
+        <div class="card product-card">
+            <img src="{{ headphone.image.url }}" class="card-img-top product-img" alt="{{ headphone.name }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ headphone.brand }} {{ headphone.name }}</h5>
+                <p class="price">₹{{ headphone.price }}</p>
+
+                <!-- KEY FEATURES -->
+                <ul class="feature-list">
+
+                    <li>{{ headphone.battery }} mah Battery</li>
+
+                </ul>
+
+                <a href="{% url 'product_view' 'headphones' headphone.id %}" class="btn btn-primary w-100">View</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="{% static 'css/home/category.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+<section class="categories-preview">
+
+    <h2 class="section-title">Browse Categories</h2>
+
+    <div class="categories-grid">
+
+        <a href="{% url 'products' %}" class="category-box">
+            <img src="{% static 'images/home/17ppro.png' %}" alt="">
+            <span>Smartphones</span>
+        </a>
+
+        <a href="{% url 'products' %}" class="category-box">
+            <img src="{% static 'images/home/lap.png' %}" alt="">
+            <span>Laptops</span>
+        </a>
+
+        <a href="{% url 'products' %}" class="category-box">
+            <img src="{% static 'images/home/headphone.png' %}" alt="">
+            <span>Earphones</span>
+        </a>
+
+        <a href="{% url 'products' %}" class="category-box">
+            <img src="{% static 'images/home/smart.png' %}" alt="">
+            <span>Smart Watches</span>
+        </a>
+
+        <a href="{% url 'products' %}" class="category-box">
+            <img src="{% static 'images/home/tab.png' %}" alt="">
+            <span>Tablets</span>
+        </a>
+
+    </div>
+
+</section>
+
+</body>
+</html>

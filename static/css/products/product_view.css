@@ -1,0 +1,137 @@
+/* PAGE BASE */
+
+/* PAGE BASE */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+
+    background-color: #020617 !important;
+    color: white;
+}
+:root{
+    --bs-body-bg: #020617;
+}
+
+/* CONTAINER FIX FOR FIXED NAVBAR */
+
+.container {
+    padding-top: 100px;
+}
+
+
+/* MAIN GLASS CARD */
+
+.glass-card {
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(5px);
+
+    background: rgba(255, 255, 255, 0.12);
+
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    padding: 25px;
+
+    color: white;
+
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+
+.glass-card img {
+    width: 100%;
+    border-radius: 12px;
+
+    object-fit: cover;
+}
+
+
+/* PRICE COLOR */
+
+.text-info {
+    color: white !important;
+}
+
+
+/* BUTTON */
+
+.btn-glass {
+    width: 100%;
+    padding: 10px;
+
+    background: rgba(255, 255, 255, 0.25);
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+
+    backdrop-filter: blur(5px);
+
+    color: white;
+
+    transition: 0.3s;
+}
+
+
+.btn-glass:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+
+/* REVIEW CARD */
+
+.review-card {
+    background: rgba(255, 255, 255, 0.12);
+
+    padding: 15px;
+
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    backdrop-filter: blur(8px);
+
+    margin-bottom: 20px;
+
+    color: white;
+}
+
+
+/* REVIEW HEADER */
+
+.review-header {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.review-avatar {
+    width: 55px;
+    height: 55px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border: 2px solid white;
+}
+
+
+.review-name {
+    margin: 0;
+
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+
+.review-text {
+    margin-top: 10px;
+
+    font-size: 0.95rem;
+    line-height: 1.4rem;
+
+    color: #e8e8e8;
+}

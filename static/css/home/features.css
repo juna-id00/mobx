@@ -1,0 +1,136 @@
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 20px;
+    padding: 40px 20px;
+
+    background: #020617;
+}
+
+
+/* FEATURE BOX */
+
+.feature-box {
+    width: 20%; /* 4 in one row */
+
+    position: relative;
+    overflow: hidden;
+
+    padding: 25px;
+
+    color: #fff;
+    text-align: center;
+
+    border-radius: 24px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,0.05) 0%,
+        rgba(255,255,255,0.02) 50%,
+        rgba(0,0,0,0.1) 100%
+    );
+
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 8px 32px rgba(0,0,0,0.4),
+        0 0 0 1px rgba(255,255,255,0.05) inset,
+        0 1px 0 rgba(255,255,255,0.1) inset;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+/* GLASS TOP LIGHT */
+
+.feature-box::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.2),
+        transparent
+    );
+}
+
+
+/* GLOW EFFECT */
+
+.feature-box::after {
+    content: "";
+
+    position: absolute;
+
+    top: -140px;
+    left: -140px;
+
+    width: 320px;
+    height: 320px;
+
+    background: radial-gradient(
+        circle at 40% 40%,
+        rgba(45,212,191,0.35) 0%,
+        rgba(45,212,191,0.18) 30%,
+        rgba(45,212,191,0.08) 55%,
+        transparent 75%
+    );
+
+    filter: blur(70px);
+    opacity: 0.9;
+
+    transition: all 0.7s cubic-bezier(.4,0,.2,1);
+}
+
+
+/* HOVER EFFECT */
+
+.feature-box:hover {
+    transform: translateY(-6px);
+}
+
+.feature-box:hover::after {
+    top: 140px;   /* move glow down */
+    left: -120px; /* stay on left side */
+}
+
+
+/* ICON */
+
+.icon {
+    font-size: 35px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 900px) {
+
+    .feature-box {
+        width: 45%;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .feature-box {
+        width: 90%;
+    }
+
+}

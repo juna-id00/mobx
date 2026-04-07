@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Simple Add to Cart (Vue) - Demo</title>
+
+  <!-- 1) Vue 3 from CDN (we use it to make reactive UI) -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+
+  <!-- 2) Tiny CSS to make it look okay -->
+  <style>
+    body { font-family: system-ui, Arial; background:#0f1724; color:#fff; padding:24px; }
+    .app { max-width: 900px; margin: 0 auto; }
+    h1 { margin-bottom: 12px; font-size: 1.6rem; }
+    .row { display:flex; gap:16px; flex-wrap:wrap; }
+    .card {
+      background: rgba(255,255,255,0.05);
+      padding:12px; border-radius:10px; width:210px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+    }
+    img { width:100%; height:120px; object-fit:cover; border-radius:6px; display:block; }
+    .title { font-weight:600; margin:8px 0 6px; font-size:0.95rem; }
+    .price { color:#7dd3fc; margin-bottom:8px; font-weight:700; }
+    button { background:#06b6d4; border:none; color:#022; padding:8px 10px; border-radius:8px; cursor:pointer; }
+    .cart {
+      position:fixed; right:20px; top:20px;
+      background: rgba(2,6,23,0.8); padding:10px 14px; border-radius:12px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.6);
+    }
+    .cart-list { margin-top:12px; background: rgba(255,255,255,0.03); padding:8px; border-radius:8px; }
+    .cart-item { display:flex; justify-content:space-between; align-items:center; gap:8px; padding:6px 0; }
+    .small { font-size:0.85rem; color:#cbd5e1; }
+    .qty-btn { background:#0ea5ac; padding:4px 8px; border-radius:6px; color:#012; border:none; cursor:pointer;}
+    .remove { background:#ef4444; color:#fff; padding:4px 8px; border-radius:6px; border:none; cursor:pointer;}
+  </style>
+</head>
+<body>
+  <div id="app" class="app">
+    <!-- HEADER -->
+    <h1>Simple Add to Cart (Vue demo)</h1>
+
+    <!-- CART floating box with count and total -->
+    <div class="cart">
+      <div><strong>Cart</strong> • <span class="small">{{ totalItems }} items</span></div>
+      <div class="small">Total: ₹{{ totalPrice.toFixed(2) }}</div>
+
+      <!-- show cart details -->
+      <div class="cart-list" v-if="cart.length">
+        <div v-for="(it, idx) in cart" :key="it.id" class="cart-item">
+          <div style="flex:1">
+            <div style="font-weight:600">{{ it.name }}</div>
+            <div class="small">₹{{ it.price }} × {{ it.qty }}</div>
+          </div>
+
+          <div style="display:flex; gap:6px; align-items:center;">
+            <!-- decrease quantity -->
+            <button class="qty-btn" @click="decrease(it.id)">-</button>
+            <div class="small">{{ it.qty }}</div>
+            <!-- increase quantity -->
+            <button class="qty-btn" @click="increase(it.id)">+</button>
+            <!-- remove item -->
+            <button class="remove" @click="remove(it.id)">x</button>
+          </div>
+        </div>
+      </div>
+
+      <div v-else class="small" style="margin-top:8px">Cart is empty</div>
+    </div>
+
+    <!-- PRODUCTS LIST -->
+    <div class="row">
+      <!-- loop over products -->
+      <div class="card" v-for="product in products" :key="product.id">
+        <img :src="product.img" :alt="product.name">
+        <div class="title">{{ product.name }}</div>
+        <div class="small">{{ product.short }}</div>
+        <div class="price">₹{{ product.price }}</div>
+
+        <!-- Add to cart button: calls addToCart -->
+        <button @click="addToCart(product)">Add to cart</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- VUE APP CODE -->
+  <script>
+    // createApp starts Vue. All app code is inside.
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {
+          // small product list for demo (id, name, price, short text, img)
+          products: [
+            { id: 1, name: "MockPhone A1", price: 24999, short: "6.5\" 120Hz • 8GB • 128GB", img: "https://picsum.photos/seed/a/400/300" },
+            { id: 2, name: "MockPhone B2", price: 19999, short: "6.4\" AMOLED • 6GB • 128GB", img: "https://picsum.photos/seed/b/400/300" },
+            { id: 3, name: "MockPhone C3", price: 29999, short: "6.7\" OLED • 12GB • 256GB", img: "https://picsum.photos/seed/c/400/300" },
+            { id: 4, name: "MockPhone D4", price: 15999, short: "6.1\" IPS • 4GB • 64GB", img: "https://picsum.photos/seed/d/400/300" }
+          ],
+
+          // cart is a list of { id, name, price, qty }
+          cart: []
+        }
+      },
+
+      computed: {
+        // compute total number of items (sum of qty)
+        totalItems() {
+          return this.cart.reduce((s, i) => s + i.qty, 0);
+        },
+        // compute total price
+        totalPrice() {
+          return this.cart.reduce((s, i) => s + i.qty * i.price, 0);
+        }
+      },
+
+      methods: {
+        // add a product to cart
+        addToCart(product) {
+          // find if product exists in cart
+          const found = this.cart.find(i => i.id === product.id);
+          if (found) {
+            // if exists, increase quantity
+            found.qty += 1;
+          } else {
+            // else push new item with qty 1
+            this.cart.push({ id: product.id, name: product.name, price: product.price, qty: 1 });
+          }
+        },
+
+        // increase quantity by 1
+        increase(id) {
+          const it = this.cart.find(i => i.id === id);
+          if (it) it.qty += 1;
+        },
+
+        // decrease quantity by 1 (remove when reaches 0)
+        decrease(id) {
+          const it = this.cart.find(i => i.id === id);
+          if (!it) return;
+          it.qty -= 1;
+          if (it.qty <= 0) {
+            // remove item from cart when qty 0
+            this.cart = this.cart.filter(x => x.id !== id);
+          }
+        },
+
+        // remove item entirely
+        remove(id) {
+          this.cart = this.cart.filter(x => x.id !== id);
+        }
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+/* =========================
+   GLOBAL PAGE BASE
+========================= */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background:#020617!important;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* =========================
+   PAGE CONTAINER
+========================= */
+.container {
+    margin-top: 6rem !important; /* space below navbar */
+    max-width: 900px;
+}
+
+/* =========================
+   MAIN CHECKOUT GLASS CARD
+========================= */
+.checkout-card {
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    background: none;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 30px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+
+/* =========================
+   HEADINGS & TEXT
+========================= */
+.checkout-card h2 {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.checkout-card h5 {
+    margin-top: 22px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.checkout-card p,
+.checkout-card li {
+    color: #e5e7eb;
+    font-size: 0.95rem;
+}
+
+hr {
+    border-color: rgba(255, 255, 255, 0.2);
+    margin: 25px 0;
+}
+
+/* =========================
+   CART ITEM CARD
+========================= */
+.cart-card {
+    display: flex;
+    gap: 15px;
+    background: none;
+    border-radius: 14px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(2px);
+}
+
+/* IMAGE */
+.cart-card .img {
+    width: 90px;
+    height: 90px;
+    border-radius: 10px;
+    object-fit: contain;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 6px;
+}
+
+/* ITEM INFO */
+.cart-card .info h5 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.cart-card .info p {
+    margin: 2px 0;
+    font-size: 0.9rem;
+}
+
+/* =========================
+   TOTAL PRICE
+========================= */
+.text-info {
+    color: #00eaff !important;
+}
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+.checkout-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+/* BACK TO CART – GLASS BUTTON */
+.btn-glass {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(2px);
+    border-radius: 14px;
+    color: white;
+    padding: 12px 22px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.btn-glass:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
+    color: white;
+}
+
+/* PLACE ORDER – PRIMARY BUTTON */
+.btn-pay {
+    background: linear-gradient(135deg, #00eaff, #007bff);
+    border: none;
+    border-radius: 14px;
+    color: white;
+    padding: 12px 28px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(0, 234, 255, 0.35);
+    transition: all 0.25s ease;
+}
+
+.btn-pay:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0, 234, 255, 0.5);
+    opacity: 0.95;
+    color: white;
+}
+
+/* =========================
+   RESPONSIVE FIX
+========================= */
+@media (max-width: 576px) {
+    .cart-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .cart-card .img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .checkout-actions {
+        flex-direction: column;
+    }
+
+    .btn-glass,
+    .btn-pay {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* =========================
+   CHECKOUT FORM INPUTS
+========================= */
+.checkout-card .form-control {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: white;
+    border-radius: 10px;
+    padding: 10px 12px;
+    backdrop-filter: blur(2px);
+}
+
+/* Placeholder color */
+.checkout-card .form-control::placeholder {
+    color: #d1d5db;
+}
+
+/* Focus state */
+.checkout-card .form-control:focus {
+    background: none;
+    border-color: #00eaff;
+    box-shadow: none;
+    color: white;
+}
+
+/* Label color */
+.checkout-card label {
+    color: #e5e7eb;
+    margin-bottom: 6px;
+}

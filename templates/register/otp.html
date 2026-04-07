@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+
+<link rel="stylesheet" href="{% static 'css/register/register.css' %}">
+
+<body>
+
+<div class="login-card">
+
+  <!-- Internal glow effect -->
+  <div class="glow"></div>
+
+  <div class="header">
+    <h1>Verify OTP</h1>
+    <p>Enter the verification code sent to your email</p>
+  </div>
+
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  <form method="POST">
+    {% csrf_token %}
+
+<div class="form-group">
+  <label>Verification Code</label>
+
+  <div class="otp-container">
+    <input type="text" maxlength="1" class="otp-input">
+    <input type="text" maxlength="1" class="otp-input">
+    <input type="text" maxlength="1" class="otp-input">
+    <input type="text" maxlength="1" class="otp-input">
+    <input type="text" maxlength="1" class="otp-input">
+    <input type="text" maxlength="1" class="otp-input">
+  </div>
+
+  <!-- hidden input to send full OTP -->
+  <input type="hidden" name="otp" id="otp-value">
+
+</div>
+
+    <button type="submit" class="login-btn">
+      <span>Verify</span>
+      <svg class="arrow" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+      </svg>
+    </button>
+
+  </form>
+
+  <p class="footer">
+    Didn't receive the code? <a href="#">Resend OTP</a>
+  </p>
+
+</div>
+
+
+
+
+<script>
+
+const inputs = document.querySelectorAll(".otp-input");
+const hiddenInput = document.getElementById("otp-value");
+
+inputs.forEach((input, index) => {
+
+  input.addEventListener("input", () => {
+
+    if(input.value.length === 1 && index < inputs.length - 1){
+      inputs[index + 1].focus();
+    }
+
+    updateOTP();
+
+  });
+
+  input.addEventListener("keydown", (e) => {
+
+    if(e.key === "Backspace" && !input.value && index > 0){
+      inputs[index - 1].focus();
+    }
+
+  });
+
+});
+
+function updateOTP(){
+
+  let otp = "";
+
+  inputs.forEach(i => {
+    otp += i.value;
+  });
+
+  hiddenInput.value = otp;
+
+}
+
+</script>
+
+</body>
+</html>

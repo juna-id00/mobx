@@ -1,0 +1,124 @@
+/* PAGE BASE */
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #020617;
+}
+
+
+/* HERO SECTION */
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 8%;
+
+    color: #fff;
+    overflow: hidden;
+
+    background: #020617;
+}
+
+
+/* TEXT BLOCK */
+
+.hero-content {
+    max-width: 500px;
+
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+}
+
+.hero-content h1 {
+    font-size: 3.2rem;
+    font-weight: 700;
+
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 1.15rem;
+    color: #e5e7eb;
+
+    margin-bottom: 25px;
+}
+
+
+/* BUTTONS */
+
+.hero-buttons .btn {
+    padding: 12px 28px;
+
+    border-radius: 8px;
+
+    font-size: 1rem;
+    text-decoration: none;
+
+    margin-right: 12px;
+
+    transition: 0.3s;
+}
+
+.btn.primary {
+    background: #3b82f6;
+    color: #fff;
+}
+
+.btn.primary:hover {
+    background: #2563eb;
+}
+
+.btn.secondary {
+    border: 1px solid #3b82f6;
+    color: #fff;
+}
+
+.btn.secondary:hover {
+    background: #3b82f6;
+}
+
+
+/* IMAGE */
+
+.hero-image img {
+    width: 420px;
+    animation: floatImg 3s ease-in-out infinite;
+}
+
+
+/* ANIMATIONS */
+
+@keyframes fadeUp {
+
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+}
+
+@keyframes floatImg {
+
+    0%, 100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+}

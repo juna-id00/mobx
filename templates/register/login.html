@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<link rel="stylesheet" href="{% static 'css/register/register.css' %}">
+<body>
+
+    <div class="login-card">
+    <!-- Internal glow effect -->
+    <div class="glow"></div>
+
+
+    <div class="header">
+      <h1>Welcome back</h1>
+      <p>Sign in to your account</p>
+    </div>
+{% if messages %}
+        {% for message in messages %}
+            <div class="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+{% endif %}
+    <form method="POST">
+  {% csrf_token %}
+
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" placeholder="Enter your username">
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="Enter your password">
+  </div>
+
+  <button type="submit" class="login-btn">
+    <span>Login</span>
+  </button>
+</form>
+
+    <p class="footer">
+      Don't have an account? <a href="{% url 'register' %}">Sign up</a>
+    </p>
+  </div>
+</body>
+</html>

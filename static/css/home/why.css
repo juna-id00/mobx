@@ -1,0 +1,75 @@
+/* WHY US SECTION */
+
+.why-us {
+    padding: 70px 8%;
+
+    text-align: center;
+    color: #fff;
+}
+
+
+.why-us h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+
+    margin-bottom: 40px;
+}
+
+
+/* GRID */
+
+.why-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 25px;
+}
+
+
+/* BOX */
+
+.why-box {
+    width: 250px;
+    padding: 25px;
+
+    border-radius: 15px;
+
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(6px);
+
+    transition: 0.3s;
+}
+
+
+.why-box:hover {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+
+/* ICON */
+
+.why-box .icon {
+    font-size: 2.5rem;
+    display: block;
+
+    margin-bottom: 12px;
+}
+
+
+/* TITLE */
+
+.why-box h3 {
+    font-size: 1.3rem;
+
+    margin-bottom: 10px;
+}
+
+
+/* TEXT */
+
+.why-box p {
+    font-size: 0.95rem;
+    color: #d1d5db;
+}

@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+
+<link rel="stylesheet" href="{% static 'css/register/register.css' %}">
+
+<body>
+
+<div class="login-card">
+  <!-- Internal glow effect -->
+  <div class="glow"></div>
+
+  <div class="header">
+    <h1>Create account</h1>
+    <p>Sign up to get started</p>
+  </div>
+{% if messages %}
+        {% for message in messages %}
+            <div class="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+  <form method="POST">
+    {% csrf_token %}
+
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" placeholder="Choose a username">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email">
+    </div>
+
+    <div class="form-group">
+      <label for="password1">Password</label>
+      <input type="password" id="password1" name="password1" placeholder="Create a password">
+    </div>
+
+    <div class="form-group">
+      <label for="password2">Confirm Password</label>
+      <input type="password" id="password2" name="password2" placeholder="Confirm your password">
+    </div>
+
+    <button type="submit" class="login-btn">
+      <span>Register</span>
+      <svg class="arrow" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+      </svg>
+    </button>
+  </form>
+
+  <p class="footer">
+    Already have an account? <a href="{% url 'login' %}">Login</a>
+  </p>
+
+</div>
+
+</body>
+</html>
